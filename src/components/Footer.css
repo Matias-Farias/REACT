@@ -1,0 +1,15 @@
+Footer {
+    background-color: #2b2b2b;
+    color: #fff;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    bottom: 0;
+    width: 100vw;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+
+}
