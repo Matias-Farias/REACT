@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import pizzaCart from "./pizzas";
+import pizzaCart from "../pizzas";
 import '../components/Cart.css';
 
 const Cart = () => {
