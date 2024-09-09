@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://github.com/Matias-Farias/REACT",
+  "homepage": "https://github.com/Matias-Farias/pizzeria-mammamia.git",
   "scripts": {
     "dev": "vite",
     "predeploy": "npm run build",
