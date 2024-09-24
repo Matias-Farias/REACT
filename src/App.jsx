@@ -10,11 +10,13 @@ import RegisterPage from "./pages/Register";
 import LoginPage from "./pages/Login";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
+import { CartProvider } from "./assets/Context/CartContext";
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   return (
-    <BrowserRouter >
+    <CartProvider>
+      <BrowserRouter >
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -28,6 +30,8 @@ function App() {
       </Routes>
       <Footer />
     </BrowserRouter>
+    </CartProvider>
+    
   );
 }
 
