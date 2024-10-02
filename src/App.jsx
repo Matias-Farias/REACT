@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
@@ -16,7 +16,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 function App() {
   return (
     <CartProvider>
-      <BrowserRouter >
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -29,7 +28,6 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
-    </BrowserRouter>
     </CartProvider>
     
   );

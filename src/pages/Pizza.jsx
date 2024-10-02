@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 const Pizza = ({ pizzaId }) => {
   const [pizza, setPizza] = useState(null);
+  const { id } = useParams();
 
   useEffect(() => {
    
@@ -9,7 +11,7 @@ const Pizza = ({ pizzaId }) => {
       .then(response => response.json())
       .then(data => setPizza(data)) 
       .catch(error => console.error('Error fetching pizza:', error));
-  }, [pizzaId]); 
+  }, [id]); 
   if (!pizza) return <div>Cargando...</div>;
   return (
     <div>

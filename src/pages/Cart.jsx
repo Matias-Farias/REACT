@@ -1,12 +1,11 @@
 import React, { useState } from "react";
+import { useUser } from "../assets/Context/UserContext";
 import pizzaCart from "../pizzas";
 import '../components/Cart.css';
 
 const Cart = () => {
-    
-    const [cart, setCart] = useState(
-        pizzaCart.map(item => ({ ...item, quantity: 0 }))
-    );
+    const [cart, setCart] = useState(pizzaCart.map(item => ({ ...item, quantity: 0 })));
+    const { token } = useUser();
 
     const increaseQuantity = (id) => {
         const newCart = cart.map(item => {
@@ -53,7 +52,7 @@ const Cart = () => {
             </ul>
             <div className="cart-total">
                 <h3>Total: ${total.toLocaleString()}</h3>
-                <button>Pagar</button>
+                <button disabled={!token}>Pagar</button>
             </div>
         </div>
     );
