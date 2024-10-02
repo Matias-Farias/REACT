@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useUser } from '../assets/Context/UserContext';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
@@ -6,18 +8,14 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const { login } = useUser();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!email || !password) {
-      setMessage('Todos los campos son obligatorios');
-      return;
-    }
-    if (password.length < 6) {
-      setMessage('La contraseña debe tener al menos 6 caracteres');
-      return;
-    }
+    await login(email, password);
     setMessage('Inicio de sesión exitoso');
+    navigate("/profile");
   };
 
   return (
@@ -34,7 +32,6 @@ function Login() {
               onChange={(e) => setEmail(e.target.value)} 
             />
           </Form.Group>
-
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control 
@@ -44,7 +41,6 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)} 
             />
           </Form.Group>
-          
           <Button variant="primary" type="submit">
             Submit
           </Button>

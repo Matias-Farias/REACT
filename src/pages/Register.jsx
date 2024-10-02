@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useUser } from '../assets/Context/UserContext';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
@@ -7,22 +9,18 @@ function Register() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
+  const { register } = useUser();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!email || !password || !confirmPassword) {
-      setMessage('Todos los campos son obligatorios');
-      return;
-    }
-    if (password.length < 6) {
-      setMessage('La contraseña debe tener al menos 6 caracteres');
-      return;
-    }
     if (password !== confirmPassword) {
       setMessage('Las contraseñas no coinciden');
       return;
     }
+    await register(email, password);
     setMessage('Registro exitoso');
+    navigate("/profile");
   };
 
   return (
